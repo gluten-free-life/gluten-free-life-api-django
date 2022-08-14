@@ -6,3 +6,6 @@ class EmployeeViewset(viewsets.ModelViewSet):
     queryset = models.Employee.objects.all()
     serializer_class = serializers.EmployeeSerializer
     
+class FoodViewset(viewsets.ModelViewSet):
+    queryset = models.Food.objects.all()
+    serializer_class = serializers.FoodSerializer
