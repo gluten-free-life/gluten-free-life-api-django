@@ -21,4 +21,12 @@ class Food(models.Model):
     img = models.TextField(default="img")
     imgfile = models.TextField(default="imgfile")
 
+# Create your models here.
+class User(models.Model):
+    uid = models.CharField(unique=True,max_length=255)
     
+ # Create your models here.
+class Wishlist(models.Model):
+    user_uid = models.CharField(max_length=255)
+    food_id = models.IntegerField()
+

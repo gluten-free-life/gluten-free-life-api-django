@@ -9,3 +9,11 @@ class EmployeeViewset(viewsets.ModelViewSet):
 class FoodViewset(viewsets.ModelViewSet):
     queryset = models.Food.objects.all()
     serializer_class = serializers.FoodSerializer
+    
+class UserViewset(viewsets.ModelViewSet):
+    queryset = models.User.objects.all()
+    serializer_class = serializers.UserSerializer
+    
+class WishlistViewset(viewsets.ModelViewSet):
+    queryset = models.Wishlist.objects.all()
+    serializer_class = serializers.WishlistSerializer
