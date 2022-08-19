@@ -80,15 +80,15 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cc_guluten_django',
-        'USER': 'sadakiawada',
-        'PASSWORD': 'p2lduhsq',
-        'HOST': 'localhost'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'cc_guluten_django',
+#         'USER': 'sadakiawada',
+#         'PASSWORD': 'p2lduhsq',
+#         'HOST': 'localhost'
+#     }
+# }
 
 DATABASES = {
     'default': {
