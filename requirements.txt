@@ -6,7 +6,7 @@ asgiref==3.5.2
 asttokens==2.0.5
 attrs==21.4.0
 backcall==0.2.0
-backports.zoneinfo==0.2.1
+backports.zoneinfo;python_version<"3.9"
 beautifulsoup4==4.11.1
 bleach==5.0.0
 cachetools==5.0.0
@@ -89,6 +89,7 @@ pyasn1-modules==0.2.8
 pycparser==2.21
 Pygments==2.11.2
 pyparsing==3.0.8
+pyproject-toml==0.0.10
 pyrsistent==0.18.1
 python-dateutil==2.8.2
 pytz==2022.1
@@ -109,6 +110,7 @@ tensorboard-plugin-wit==1.8.1
 tensorflow-estimator==2.8.0
 terminado==0.13.3
 tinycss2==1.1.1
+toml==0.10.2
 tornado==6.1
 traitlets==5.1.1
 urllib3==1.26.9
