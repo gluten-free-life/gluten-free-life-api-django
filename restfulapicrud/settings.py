@@ -80,27 +80,31 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'cc_guluten_django',
-#         'USER': 'sadakiawada',
-#         'PASSWORD': 'p2lduhsq',
-#         'HOST': 'localhost'
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd8nn85i7ikaje0',
-        'HOST': 'ec2-52-207-15-147.compute-1.amazonaws.com',
-        'PORT': 5432
-        'USER': 'njuuzpdblvqidc',
-        'PASSWORD': '0bc30851afef4e25c5c3f7f8c2913ef9cb68cc6e6dd4b31fff3355418d94d28d',
-
+        'NAME': 'cc_guluten_django',
+        'USER': 'sadakiawada',
+        'PASSWORD': 'p2lduhsq',
+        'HOST': 'localhost'
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd8nn85i7ikaje0',
+#         'HOST': 'ec2-52-207-15-147.compute-1.amazonaws.com',
+#         'PORT': 5432
+#         'USER': 'njuuzpdblvqidc',
+#         'PASSWORD': '0bc30851afef4e25c5c3f7f8c2913ef9cb68cc6e6dd4b31fff3355418d94d28d',
+
+#     }
+# }
+
+import dj_databse_url
+db_from_env = dj_database_url.confit(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
