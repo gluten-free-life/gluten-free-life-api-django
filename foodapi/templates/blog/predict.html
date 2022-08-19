@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Prediction Page</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      body {
+        background-image: url("../static/DiabetesPrediction/images/img1.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      .main {
+        position: fixed;
+        top: 140px;
+        left: 410px;
+        width: 550px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        align-items: center;
+        padding: 5%;
+      }
+      h1 {
+        color: #0086b3;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      input[type="submit"] {
+        background-color: #4dc3ff;
+        border: 2px;
+        color: white;
+        padding: 8px 16px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <p>Welcome to the prediction page</p>
+      <h1>Please enter the following info</h1>
+      <form action="result">
+        <table>
+          <tr>
+            <td>Pregnancies</td>
+            <td><input type="test" name="n1" /></td>
+          </tr>
+          <tr>
+            <td>Glucose</td>
+            <td><input type="test" name="n2" /></td>
+          </tr>
+          <tr>
+            <td>Blood Pressure</td>
+            <td><input type="test" name="n3" /></td>
+          </tr>
+          <tr>
+            <td>Skin Thickness</td>
+            <td><input type="test" name="n4" /></td>
+          </tr>
+          <tr>
+            <td>Insulin</td>
+            <td><input type="test" name="n5" /></td>
+          </tr>
+          <tr>
+            <td>BMI</td>
+            <td><input type="test" name="n6" /></td>
+          </tr>
+          <tr>
+            <td>Diabetes Pedigree function</td>
+            <td><input type="test" name="n7" /></td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td><input type="test" name="n8" /></td>
+          </tr>
+        </table>
+        <input type="submit" />
+      </form>
+      Result:{{result2}}
+    </div>
+  </body>
+</html>
