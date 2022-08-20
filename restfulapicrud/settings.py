@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+env = environ.Env(
+    # 型とデフォルト値を定義
+    DEBUG=(bool, False)
+)
+# .envを読み込む
+environ.Env.read_env()
 
 
 
@@ -92,7 +99,7 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': env('ENGINE'),
         'NAME': 'd8nn85i7ikaje0',
         'HOST': 'ec2-52-207-15-147.compute-1.amazonaws.com',
         'PORT': '5432',
