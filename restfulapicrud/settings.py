@@ -158,10 +158,12 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ORIGIN_WHITELIST = [
      'http://127.0.0.1:3000',
      'http://localhost:3000',
-     'https://guluten-free-life-django.herokuapp.com',
-     'https://django-guluten-free-api.herokuapp.com/api/foods/'
+     'https://guluten-free-life-django.herokuapp.com/',
+
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
 WHITENOISE_ALLOW_ALL_ORIGINS = False
+
+CORS_ORIGIN_ALLOW_ALL=True
