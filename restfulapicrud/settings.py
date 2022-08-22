@@ -159,3 +159,5 @@ CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000',
      'https://guluen-free-life.herokuapp.com'
 ]
+
+CORS_ALLOW_CREDENTIALS = True
