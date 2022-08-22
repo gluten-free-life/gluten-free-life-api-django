@@ -10,14 +10,31 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+# import environ
+ 
+# # 引数なしでオブジェクト作成
+# env = environ.Env()
+ 
+# # .envを読み込む
+# env.read_env()
+ 
+
+
+# # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR = Path(__file__).resolve().parent.parent
 from pathlib import Path
+import environ
+import os
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
+# Set the project base directory
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -56,6 +73,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'restfulapicrud.urls'
 
 TEMPLATES = [
@@ -80,14 +98,10 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'cc_guluten_django',
-#         'USER': 'sadakiawada',
-#         'PASSWORD': 'p2lduhsq',
-#         'HOST': 'localhost'
-#     }
+#     'default': env.db()
 # }
 
 DATABASES = {
@@ -106,7 +120,12 @@ DATABASES = {
 # db_from_env = dj_database_url.config(conn_max_age=600)
 # DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = ['*', 'https://guluten-free-life-django.herokuapp.com/']
+ALLOWED_HOSTS = ['*', 'https://guluten-free-life-django.herokuapp.com']
+
+# CORS_ALLOWED_ORIGINS = [
+#     "https://guluten-free-life-django.herokuapp.com",
+
+# ]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -155,6 +174,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ]
 
 CORS_ORIGIN_WHITELIST = [
-     'http://127.0.0.1:3000',
+     'https://guluten-free-life-django.herokuapp.com',
      'http://localhost:3000'
 ]
+
+# CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOW_METHODS = [
+#     "DELETE",
+#     "GET",
+#     "OPTIONS",
+#     "PATCH",
+#     "POST",
+#     "PUT",
+# ]
+
+# CORS_ALLOW_HEADERS = [
+#     "accept",
+#     "accept-encoding",
+#     "authorization",
+#     "content-type",
+#     "dnt",
+#     "origin",
+#     "user-agent",
+#     "x-csrftoken",
+#     "x-requested-with",
+# ]
