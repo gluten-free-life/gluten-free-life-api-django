@@ -111,10 +111,22 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 # }
 
 load_dotenv(find_dotenv())
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600),
+#     # conn_max_ageはデータベースへの接続速度を速くするための設定。60秒までしかデータベースに接続しないよ、という意味。 
+# }
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600),
-    # conn_max_ageはデータベースへの接続速度を速くするための設定。60秒までしかデータベースに接続しないよ、という意味。 
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
 }
+db_from_env = dj_database_url.config() 
+DATABASES['default'].update(db_from_env)
 
 # DATABASES = {
 #     #  'default': {
