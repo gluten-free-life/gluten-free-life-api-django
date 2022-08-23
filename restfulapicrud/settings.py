@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import environ #　django-environ-2をインポート
-
-
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -106,11 +106,17 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    # os.environ['DATABASE_URL']を読み込みます。なければImproperlyConfigured例外が発生します
-    'default': env.db(),
-    # os.environ['SQLITE_URL']を読み込みます
+# DATABASES = {
+#     # os.environ['DATABASE_URL']を読み込みます。なければImproperlyConfigured例外が発生します
+#     'default': env.db(),
+#     # os.environ['SQLITE_URL']を読み込みます
 
+# }
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 # import dj_databse_url
