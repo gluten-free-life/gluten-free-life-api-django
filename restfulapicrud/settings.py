@@ -10,10 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-# import os
+import os
 from pathlib import Path
 # import environ #　django-environ-2をインポート
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -114,16 +113,36 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 
 # }
 
-import dj_database_url
-from dotenv import (
-    find_dotenv,
-    load_dotenv,
-)
+# import dj_database_url
+# from dotenv import (
+#     find_dotenv,
+#     load_dotenv,
+# )
 
-load_dotenv(find_dotenv())
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600),
-}
+# load_dotenv(find_dotenv())
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600),
+# }
+
+
+# url = os.environ.get('DATABASE_URL')
+
+# DATABASES = {
+#     'default':{
+#         'ENGINE':'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd8nn85i7ikaje0',
+#         'USER': url.username,
+#         'PASSWORD': url.password,
+#         'HOST': url.hostname,
+#         'PORT': url.port
+#     }
+# }
+
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600)
+    }
 
 # DATABASES = {
 #     'default': {
