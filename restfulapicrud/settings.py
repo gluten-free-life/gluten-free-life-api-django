@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-import os
+# import os
 from pathlib import Path
 # import environ #　django-environ-2をインポート
 import dj_database_url
@@ -119,13 +119,21 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 # }
 
 load_dotenv(find_dotenv())
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600),
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd8nn85i7ikaje0'
+    }
 }
 
+
 # import dj_databse_url
-# db_from_env = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = ['*']
 
@@ -164,8 +172,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
