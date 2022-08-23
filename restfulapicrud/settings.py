@@ -152,13 +152,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3000",
-    'https://guluen-free-life.herokuapp.com'
+    'https://guluten-free-life-django.herokuapp.com'
 ]
 
 CORS_ORIGIN_WHITELIST = [
      'http://127.0.0.1:3000',
      'http://localhost:3000',
-     'https://guluten-free-life-django.herokuapp.com/',
+     'https://guluten-free-life-django.herokuapp.com',
 
 ]
 
