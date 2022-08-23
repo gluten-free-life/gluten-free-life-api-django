@@ -124,7 +124,7 @@ import dj_database_url
 #     load_dotenv,
 # )
 # load_dotenv(find_dotenv())
-DATABASES = { 'default': dj_database_url.config() }
+DATABASES = { 'default': dj_database_url.config(default='postgres://njuuzpdblvqidc:0bc30851afef4e25c5c3f7f8c2913ef9cb68cc6e6dd4b31fff3355418d94d28d@ec2-52-207-15-147.compute-1.amazonaws.com:5432/d8nn85i7ikaje0') }
 # DATABASES = {
 #     'default': dj_database_url.config(conn_max_age=600),
 # }
