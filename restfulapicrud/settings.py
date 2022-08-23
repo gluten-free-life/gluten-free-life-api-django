@@ -11,12 +11,16 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+# import environ #　django-environ-2をインポート
 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# .envファイルを読み込み
+# env = environ.Env()
+# environ.Env.read_env(Path.joinpath(BASE_DIR, '.env')) # ここで.envファイルを読み込み
 
 
 # Quick-start development settings - unsuitable for production
@@ -102,11 +106,18 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     # os.environ['DATABASE_URL']を読み込みます。なければImproperlyConfigured例外が発生します
+#     'default': env.db(),
+#     # os.environ['SQLITE_URL']を読み込みます
+
+# }
+
 # import dj_databse_url
 # db_from_env = dj_database_url.config(conn_max_age=600)
 # DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = ['*', 'https://guluten-free-life-django.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -149,12 +160,21 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://127.0.0.1:3000",
-#     "http://localhost:3000"
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
+    'https://guluten-free-life-django.herokuapp.com'
+]
 
 CORS_ORIGIN_WHITELIST = [
      'http://127.0.0.1:3000',
-     'http://localhost:3000'
+     'http://localhost:3000',
+     'https://guluten-free-life-django.herokuapp.com',
+
 ]
+
+# CORS_ALLOW_CREDENTIALS = True
+
+# WHITENOISE_ALLOW_ALL_ORIGINS = False
+
+CORS_ORIGIN_ALLOW_ALL=True
