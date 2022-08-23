@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import environ #　django-environ-2をインポート
+import dj_database_url
 
 
 
@@ -108,11 +109,12 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 
 
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.postgresql',
-         'NAME': BASE_DIR / 'db.sqlite3',
-     }
+    #  'default': {
+    #      'ENGINE': 'django.db.backends.postgresql',
+    #      'NAME': BASE_DIR / 'db.sqlite3',
+    #  }
 }
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # DATABASES = {
 #     # os.environ['DATABASE_URL']を読み込みます。なければImproperlyConfigured例外が発生します
