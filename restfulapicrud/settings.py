@@ -13,7 +13,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 # import os
 from pathlib import Path
 # import environ #　django-environ-2をインポート
-
+import dj_database_url
+from dotenv import (
+    find_dotenv,
+    load_dotenv,
+)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -119,26 +123,23 @@ import dj_database_url
 #     find_dotenv,
 #     load_dotenv,
 # )
-
 # load_dotenv(find_dotenv())
-# DATABASES = {
-#     'default': dj_database_url.config(conn_max_age=600),
-# }
+DATABASES = { 'default': dj_database_url.config() }
 # DATABASES = {
 #     'default': dj_database_url.config(conn_max_age=600),
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd8nn85i7ikaje0'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd8nn85i7ikaje0'
+#     }
+# }
 
 
 # # import dj_databse_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = ['*']
 
