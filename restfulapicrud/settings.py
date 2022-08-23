@@ -114,10 +114,7 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 # }
 
 # import dj_database_url
-# from dotenv import (
-#     find_dotenv,
-#     load_dotenv,
-# )
+
 
 # load_dotenv(find_dotenv())
 # DATABASES = {
@@ -142,6 +139,16 @@ if 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600)
+    }
+else:
+    import dj_database_url
+    from dotenv import (
+    find_dotenv,
+    load_dotenv,
+    )
+    load_dotenv(find_dotenv())
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600),
     }
 
 # DATABASES = {
