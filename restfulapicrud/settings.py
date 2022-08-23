@@ -10,14 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 # import environ #　django-environ-2をインポート
 import dj_database_url
-
 from dotenv import (
     find_dotenv,
     load_dotenv,
 )
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,10 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ttyejeg@xqmr#^16y=2(q%jl(l5rfn#*(pjtzfux311#inyay$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-
-
+DEBUG = False
 
 # Application definition
 
@@ -54,14 +52,17 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'restfulapicrud.urls'
@@ -110,38 +111,17 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 #     }
 # }
 
-load_dotenv(find_dotenv())
-# DATABASES = {
-#     'default': dj_database_url.config(conn_max_age=600),
-#     # conn_max_ageはデータベースへの接続速度を速くするための設定。60秒までしかデータベースに接続しないよ、という意味。 
-# }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
-}
-db_from_env = dj_database_url.config() 
-DATABASES['default'].update(db_from_env)
-
-# DATABASES = {
-#     #  'default': {
-#     #      'ENGINE': 'django.db.backends.postgresql',
-#     #      'NAME': BASE_DIR / 'db.sqlite3',
-#     #  }
-# }
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-
 # DATABASES = {
 #     # os.environ['DATABASE_URL']を読み込みます。なければImproperlyConfigured例外が発生します
-#     'default': env.db() or "DATABASE_URL",
+#     'default': env.db() ,
 #     # os.environ['SQLITE_URL']を読み込みます
 
 # }
+
+load_dotenv(find_dotenv())
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600),
+}
 
 # import dj_databse_url
 # db_from_env = dj_database_url.config(conn_max_age=600)
@@ -184,7 +164,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
