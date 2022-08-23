@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-# import environ #　django-environ-2をインポート
+import environ #　django-environ-2をインポート
 
 
 
@@ -19,8 +19,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # .envファイルを読み込み
-# env = environ.Env()
-# environ.Env.read_env(Path.joinpath(BASE_DIR, '.env')) # ここで.envファイルを読み込み
+env = environ.Env()
+environ.Env.read_env(Path.joinpath(BASE_DIR, '.env')) # ここで.envファイルを読み込み
 
 
 # Quick-start development settings - unsuitable for production
@@ -94,21 +94,29 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd8nn85i7ikaje0',
-        'HOST': 'ec2-52-207-15-147.compute-1.amazonaws.com',
-        'PORT': '5432',
-        'USER': 'njuuzpdblvqidc',
-        'PASSWORD': '0bc30851afef4e25c5c3f7f8c2913ef9cb68cc6e6dd4b31fff3355418d94d28d',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd8nn85i7ikaje0',
+#         'HOST': 'ec2-52-207-15-147.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#         'USER': 'njuuzpdblvqidc',
+#         'PASSWORD': '0bc30851afef4e25c5c3f7f8c2913ef9cb68cc6e6dd4b31fff3355418d94d28d',
 
-    }
+#     }
+# }
+
+
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     }
 }
 
 # DATABASES = {
 #     # os.environ['DATABASE_URL']を読み込みます。なければImproperlyConfigured例外が発生します
-#     'default': env.db(),
+#     'default': env.db() or "DATABASE_URL",
 #     # os.environ['SQLITE_URL']を読み込みます
 
 # }
