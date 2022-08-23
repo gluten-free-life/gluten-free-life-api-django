@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-import environ #　django-environ-2をインポート
+# import environ #　django-environ-2をインポート
 import dj_database_url
 from decouple import config
 
@@ -19,8 +19,8 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # .envファイルを読み込み
-env = environ.Env()
-environ.Env.read_env(Path.joinpath(BASE_DIR, '.env')) # ここで.envファイルを読み込み
+# env = environ.Env()
+# environ.Env.read_env(Path.joinpath(BASE_DIR, '.env')) # ここで.envファイルを読み込み
 
 
 # Quick-start development settings - unsuitable for production
@@ -113,11 +113,14 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 
 # }
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
+
+#updated
+DATABASES = {'default': dj_database_url.config(default='DATABASE_URL')}
 
 # import dj_databse_url
 # db_from_env = dj_database_url.config(conn_max_age=600)
