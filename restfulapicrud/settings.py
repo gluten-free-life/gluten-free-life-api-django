@@ -12,15 +12,15 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
-# import environ #　django-environ-2をインポート
+import environ #　django-environ-2をインポート
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # .envファイルを読み込み
-# env = environ.Env()
-# environ.Env.read_env(Path.joinpath(BASE_DIR, '.env')) # ここで.envファイルを読み込み
+env = environ.Env()
+environ.Env.read_env(Path.joinpath(BASE_DIR, '.env')) # ここで.envファイルを読み込み
 
 
 # Quick-start development settings - unsuitable for production
@@ -106,12 +106,12 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     # os.environ['DATABASE_URL']を読み込みます。なければImproperlyConfigured例外が発生します
-#     'default': env.db() ,
-#     # os.environ['SQLITE_URL']を読み込みます
+DATABASES = {
+    # os.environ['DATABASE_URL']を読み込みます。なければImproperlyConfigured例外が発生します
+    'default': env.db() ,
+    # os.environ['SQLITE_URL']を読み込みます
 
-# }
+}
 
 # import dj_database_url
 
@@ -142,15 +142,15 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 #     }
 # else:
 
-import dj_database_url
-# from dotenv import (
-# find_dotenv,
-# load_dotenv,
-# )
-# load_dotenv(find_dotenv())
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600),
-}
+# import dj_database_url
+# # from dotenv import (
+# # find_dotenv,
+# # load_dotenv,
+# # )
+# # load_dotenv(find_dotenv())
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600),
+# }
 
 # DATABASES = {
 #     'default': {
