@@ -142,11 +142,11 @@ DATABASES = {
 #     }
 # else:
 import dj_database_url
-from dotenv import (
-find_dotenv,
-load_dotenv,
-)
-load_dotenv(find_dotenv())
+# from dotenv import (
+# find_dotenv,
+# load_dotenv,
+# )
+# load_dotenv(find_dotenv())
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600),
 }
