@@ -78,18 +78,20 @@ WSGI_APPLICATION = 'restfulapicrud.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # Localのdbを読み込む場合
-# import environ #　django-environ-2をインポート
-# env = environ.Env()
-# environ.Env.read_env(Path.joinpath(BASE_DIR, '.env')) # ここで.envファイルを読み込み
-# load_dotenv(find_dotenv())
-# DATABASES = {
-#     'default': dj_database_url.config(conn_max_age=600),
-# }
-
 import dj_database_url
+from dotenv import (
+    find_dotenv,
+    load_dotenv,
+)
+load_dotenv(find_dotenv())
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600),
 }
+
+# import dj_database_url
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600),
+# }
 
 ALLOWED_HOSTS = ['*']
 
